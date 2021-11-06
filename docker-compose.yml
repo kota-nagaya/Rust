@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  rust:
+    build:
+      context: .
+      dockerfile: ./infra/docker/rust/Dockerfile
+    ports:
+      - ${WEB_PORT:-6000}:80
+    volumes:
+      - ./rust:/work/rust
+    command: tail -f /dev/null
+    working_dir: /work
